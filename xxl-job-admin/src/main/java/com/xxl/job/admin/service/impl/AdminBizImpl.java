@@ -107,6 +107,10 @@ public class AdminBizImpl implements AdminBiz {
             handleMsg.append(callbackMsg);
         }
 
+        if (handleMsg.length() > 15000) {
+            handleMsg = new StringBuffer(handleMsg.substring(0, 15000));  // text最大64kb 避免长度过长
+        }
+
         // success, save log
         log.setHandleTime(new Date());
         log.setHandleCode(handleCallbackParam.getExecuteResult().getCode());

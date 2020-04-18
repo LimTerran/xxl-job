@@ -10,7 +10,7 @@ $(function() {
 			type:"post",
 			data : function ( d ) {
 				var obj = {};
-				obj.appName = $('#appName').val();
+				obj.appname = $('#appname').val();
 				obj.title = $('#title').val();
 				obj.start = d.start;
 				obj.length = d.length;
@@ -26,7 +26,7 @@ $(function() {
 				"visible" : false
 			},
 			{
-				"data": 'appName',
+				"data": 'appname',
 				"visible" : true,
 				"width":'30%'
 			},
@@ -123,13 +123,13 @@ $(function() {
 		var id = $(this).attr("_id");
 		var row = tableData['key'+id];
 
-		var html = '<center>';
+		var html = '<div>';
 		if (row.registryList) {
 			for (var index in row.registryList) {
-				html += '<span class="badge bg-green" >' + row.registryList[index] + '</span><br>';
+				html += (parseInt(index)+1) + '. <span class="badge bg-green" >' + row.registryList[index] + '</span><br>';
 			}
 		}
-		html += '</center>';
+		html += '</div>';
 
 		layer.open({
 			title: I18n.jobinfo_opt_registryinfo ,
@@ -186,7 +186,7 @@ $(function() {
 		var length = value.length;
 		var valid = /^[a-z][a-zA-Z0-9-]*$/;
 		return this.optional(element) || valid.test(value);
-	}, I18n.jobgroup_field_appName_limit );
+	}, I18n.jobgroup_field_appname_limit );
 
 	$('.add').on('click', function(){
 		$('#addModal').modal({backdrop: false, keyboard: false}).modal('show');
@@ -196,7 +196,7 @@ $(function() {
 		errorClass : 'help-block',
 		focusInvalid : true,
 		rules : {
-			appName : {
+			appname : {
 				required : true,
 				rangelength:[4,64],
 				myValid01 : true
@@ -207,10 +207,10 @@ $(function() {
 			}
 		},
 		messages : {
-			appName : {
+			appname : {
 				required : I18n.system_please_input+"AppName",
-				rangelength: I18n.jobgroup_field_appName_length ,
-				myValid01: I18n.jobgroup_field_appName_limit
+				rangelength: I18n.jobgroup_field_appname_length ,
+				myValid01: I18n.jobgroup_field_appname_limit
 			},
 			title : {
 				required : I18n.system_please_input + I18n.jobgroup_field_title ,
@@ -277,7 +277,7 @@ $(function() {
 		var row = tableData['key'+id];
 
 		$("#updateModal .form input[name='id']").val( row.id );
-		$("#updateModal .form input[name='appName']").val( row.appName );
+		$("#updateModal .form input[name='appname']").val( row.appname );
 		$("#updateModal .form input[name='title']").val( row.title );
 
 		// 注册方式
@@ -293,7 +293,7 @@ $(function() {
 		errorClass : 'help-block',
 		focusInvalid : true,
 		rules : {
-			appName : {
+			appname : {
 				required : true,
 				rangelength:[4,64],
 				myValid01 : true
@@ -304,10 +304,10 @@ $(function() {
 			}
 		},
 		messages : {
-            appName : {
+			appname : {
                 required : I18n.system_please_input+"AppName",
-                rangelength: I18n.jobgroup_field_appName_length ,
-                myValid01: I18n.jobgroup_field_appName_limit
+                rangelength: I18n.jobgroup_field_appname_length ,
+                myValid01: I18n.jobgroup_field_appname_limit
             },
             title : {
                 required : I18n.system_please_input + I18n.jobgroup_field_title ,
